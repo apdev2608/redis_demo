@@ -9,8 +9,8 @@ http://www.mulesoft.org/schema/mule/redis http://www.mulesoft.org/schema/mule/re
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
 	<flow name="redis_testFlow" doc:id="c5f6cfc2-3ce9-4b86-bf53-aabb8deb896c" >
-		<http:listener doc:name="Listener" doc:id="ccd9e3c5-69c3-488f-a644-c1c27adc992f" config-ref="HTTP_Listener_config"/>
+		<http:listener doc:name="Listener" doc:id="ccd9e3c5-69c3-488f-a644-c1c27adc992f" config-ref="HTTP_Listener_config" path="/redis-set"/>
 		<redis:set doc:name="Set" doc:id="5a5ef3ee-ae4f-4904-b395-c517a3825061" />
-		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="61fd730f-8111-45d3-8fef-bd76e7a1c721" />
+		<set-payload value='#[" redis-demo"]' doc:name="Set Payload" doc:id="61fd730f-8111-45d3-8fef-bd76e7a1c721" />
 	</flow>
 </mule>
