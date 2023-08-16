@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:redis="http://www.mulesoft.org/schema/mule/redis" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/redis http://www.mulesoft.org/schema/mule/redis/current/mule-redis.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="7e949397-53f3-427c-a26c-9be252c74aee" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="redis_testFlow" doc:id="c5f6cfc2-3ce9-4b86-bf53-aabb8deb896c" >
+		<http:listener doc:name="Listener" doc:id="ccd9e3c5-69c3-488f-a644-c1c27adc992f" config-ref="HTTP_Listener_config"/>
+		<redis:set doc:name="Set" doc:id="5a5ef3ee-ae4f-4904-b395-c517a3825061" />
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="61fd730f-8111-45d3-8fef-bd76e7a1c721" />
+	</flow>
+</mule>
